@@ -1,6 +1,7 @@
 package filipeaugusto.com.recyclerview;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -64,6 +65,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
                 Toast.makeText(mContext, mImagesNames.get(position), Toast.LENGTH_SHORT).show();
 
+                //Changing to another activity after clicked
+                Intent intent = new Intent(mContext, DetailsActivity.class);
+                intent.putExtra("image_url", mImages.get(position));
+                intent.putExtra("image_name", mImagesNames.get(position));
+                //starting the activity
+                mContext.startActivity(intent);
             }
         });
     }
